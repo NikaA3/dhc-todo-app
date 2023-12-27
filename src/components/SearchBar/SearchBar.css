@@ -1,0 +1,22 @@
+.search-bar {
+  width: 335px;
+  height: 36px;
+  padding: 16px 20px;
+  box-shadow: 0px 2px 4px 0px rgba(106, 108, 224, 0.15);
+  border-radius: 6px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-btn {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
