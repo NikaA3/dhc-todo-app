@@ -11,6 +11,7 @@ const DownArrowIcon = ({ onClick }: IDropdownIcon) => {
       viewBox="0 0 20 20"
       fill="none"
       onClick={onClick}
+      className="cursor-pointer"
     >
       <g id="tabler:chevron-up">
         <path

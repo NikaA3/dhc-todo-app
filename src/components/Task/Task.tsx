@@ -31,7 +31,6 @@ interface ITask {
       edit: boolean;
     }>
   >;
-  searchText: string;
 }
 
 export interface taskObject {
@@ -43,7 +42,6 @@ const Task = ({
   setEditTask,
   todoEdit,
   setTodoEdit,
-  searchText,
 }: ITask) => {
   const {
     minimizeTask,
@@ -52,6 +50,8 @@ const Task = ({
     setTodoItems,
     deleteTodo,
     setCompeletedTodo,
+    theme,
+    searchText,
   } = useContext(TodoContext) || {};
   const [filteredTodoItems, setFilteredTodoItems] = useState<ITodoItems[]>([]);
 
@@ -85,8 +85,8 @@ const Task = ({
   useEffect(() => {
     const filteredItems = todoItems!.filter(
       (item) =>
-        item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.content.toLowerCase().includes(searchText.toLowerCase())
+        item.title.toLowerCase().includes(searchText!.toLowerCase()) ||
+        item.content.toLowerCase().includes(searchText!.toLowerCase())
     );
     setFilteredTodoItems(filteredItems);
   }, [todoItems, searchText]);
@@ -114,7 +114,7 @@ const Task = ({
               minimizeTask && minimizeTask[todoItem.id]
                 ? "h-[172px]"
                 : "h-[101px]"
-            }  bg-task-background-color pb-[12px] px-[20px] rounded-[12px] task-container flex flex-col justify-between p-[12px] mb-2`}
+            }  bg-task-background-color dark:bg-dark-todo pb-[12px] px-[20px] rounded-[12px] task-container flex flex-col justify-between p-[12px] mb-2`}
             key={todoItem.id}
           >
             <div className="flex justify-between">
@@ -135,7 +135,7 @@ const Task = ({
             </div>
             {minimizeTask && minimizeTask[todoItem.id] && (
               <div className="flex justify-center items-center">
-                <div className="w-[311px] h-[54px] task-content px-[12px] py-[8px]">
+                <div className="w-[311px] h-[54px] task-content px-[12px] py-[8px] bg-background-color dark:bg-slate-300">
                   {todoItem.content}
                 </div>
               </div>
@@ -155,10 +155,11 @@ const Task = ({
                 />
               </div>
               <div className="flex items-center">
-                <div className="me-2 mb-[2px] custom-text-sm-light">
+                <div className="me-2 mb-[2px] custom-text-sm-light dark:text-white">
                   Mark completed
                 </div>
                 <CompletedIcon
+                  fill={`${theme === "dark" ? "#116D6E" : "#3DCB65"}`}
                   onClick={() => completedTodoHandler(todoItem.id)}
                 />
               </div>

@@ -11,6 +11,7 @@ const CloseIcon = ({ onClick }: ICloseIcon) => {
       viewBox="0 0 20 20"
       fill="none"
       onClick={onClick}
+      className="cursor-pointer"
     >
       <g id="material-symbols:close">
         <path

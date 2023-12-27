@@ -32,7 +32,7 @@ const App = () => {
 
   const [todoTitleValue, setTodoTitleValue] = useState("");
   const [todoContentValue, setTodoContentValue] = useState("");
-  const [searchText, setSearchText] = useState("");
+
   const [todoEdit, setTodoEdit] = useState({
     item: { id: 0, title: "", content: "" },
     edit: false,
@@ -84,11 +84,11 @@ const App = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen flex flex-col justify-between">
+    <div className="w-full h-screen bg-background-color dark:bg-dark-gray flex flex-col justify-between">
       <div>
         <UserArea />
         <div className="flex justify-center">
-          <SearchBar setSearchText={setSearchText} />
+          <SearchBar />
         </div>
         <TaskNavBar />
         <div className="flex flex-col justify-center items-center">
@@ -104,7 +104,6 @@ const App = () => {
                     setEditTask={setEditTask}
                     todoEdit={todoEdit}
                     setTodoEdit={setTodoEdit}
-                    searchText={searchText}
                   />
                 }
               />
@@ -143,7 +142,7 @@ const App = () => {
         </div>
       </div>
       <div
-        className="flex justify-center pb-[11px]"
+        className="flex justify-center pb-[11px] "
         onClick={() => setAddTask(true)}
       >
         <AddTaskButton />

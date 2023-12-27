@@ -1,24 +1,24 @@
+import { useContext } from "react";
 import SearchIcon from "../../assets/SearchIcon";
+import TodoContext from "../../context/TodoContext";
 import "./SearchBar.css";
 
-interface ISearchBar {
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
-}
+const SearchBar = () => {
+  const { setSearchText } = useContext(TodoContext) || {};
 
-const SearchBar = ({ setSearchText }: ISearchBar) => {
   const searchTodoHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
+    setSearchText && setSearchText(e.target.value);
   };
 
   return (
-    <div className="flex justify-center items-center search-container">
+    <div className="flex justify-center items-center search-container ">
       <input
         type="text"
-        className="search-bar placeholder-text"
+        className="search-bar placeholder-text dark:bg-dark-todo dark:text-white"
         placeholder="search for notes"
         onChange={searchTodoHandler}
       />
-      <div className="search-btn bg-button-background-color">
+      <div className="search-btn bg-button-background-color dark:bg-dark-icon">
         <SearchIcon />
       </div>
     </div>

@@ -11,6 +11,7 @@ const EditIcon = ({ onClick }: IEditIconProps) => {
       viewBox="0 0 20 20"
       fill="none"
       onClick={onClick}
+      className="cursor-pointer"
     >
       <g id="fe:edit">
         <path

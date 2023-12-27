@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { ITodoItems } from "../App";
 import { taskObject } from "../components/Task/Task";
+import { Theme } from "../components/ThemeSwitch/ThemeSwitch";
 
 interface TodoContextProps {
   children: ReactNode;
@@ -17,6 +18,10 @@ interface todoContextValue {
   deleteTodo: (id: number) => void;
   activePage: number | null;
   setActivePage: React.Dispatch<React.SetStateAction<number | null>>;
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
 }
 export const TodoContext = createContext<todoContextValue | undefined>(
   undefined
@@ -38,8 +43,9 @@ export const TodoContextProvider = ({ children }: TodoContextProps) => {
     setTodoItems && setTodoItems(filteredTodos);
     localStorage.setItem("todoItems", JSON.stringify(filteredTodos));
   };
-  const [activePage, setActivePage] = useState<number | null>(null);
-
+  const [activePage, setActivePage] = useState<number | null>(1);
+  const [theme, setTheme] = useState<Theme>("light");
+  const [searchText, setSearchText] = useState("");
   return (
     <TodoContext.Provider
       value={{
@@ -53,6 +59,10 @@ export const TodoContextProvider = ({ children }: TodoContextProps) => {
         deleteTodo,
         activePage,
         setActivePage,
+        theme,
+        setTheme,
+        searchText,
+        setSearchText,
       }}
     >
       {children}

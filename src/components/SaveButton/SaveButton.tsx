@@ -8,7 +8,7 @@ const SaveButton = ({ title, onClick }: ISaveButton) => {
     <button
       type="button"
       className="w-[311px] h-[34px]
-		 bg-button-background-color text-button
+		 bg-button-background-color dark:bg-dark-icon text-button
 			rounded
 		 "
       onClick={onClick}
